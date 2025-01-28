@@ -110,6 +110,12 @@ echo -e "$ARROW nodejs $(display_status node)"
 
 install_tool() {
     local tool=$1
+    local skip_requirements=$2
+    
+    if [ "$skip_requirements" != "true" ]; then
+        install_requirements
+    fi
+    
     case $tool in
         "sublist3r")
             install_python_tool "https://github.com/aboul3la/Sublist3r.git" "sublist3r"
@@ -188,7 +194,7 @@ install_tool() {
         "all")
             install_requirements
             for tool in sublist3r anew assetfinder gobuster puredns amass findomain dalfox hakrawler subjs gospider ffuf gau waybackurls gf qsreplace massdns paramspider arjun sqlmap; do
-                install_tool $tool
+                install_tool $tool "true"
             done
             ;;
         *)
@@ -206,7 +212,7 @@ echo -e "$DOLLAR shotit list                   - List all available tools"
 case $1 in
     "install")
         if [ "$2" = "all" ]; then
-            install_requirements
+            install_tool "all"
         elif [ -n "$2" ]; then
             install_tool "$2"
         else
