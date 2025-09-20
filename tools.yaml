@@ -1,0 +1,115 @@
+name: "My personal toolkit"
+description: "CLI tools for h4ck1ng and hunt1ng"
+
+installs:
+  - name: "go"
+    description: "Go programming language"
+    commands:
+      apt: ["sudo apt update", "sudo apt install -y golang-go"]
+      pacman: ["sudo pacman -S go"]
+      yum: ["sudo yum install -y golang"]
+      dnf: ["sudo dnf install -y golang"]
+      brew: ["brew install go"]
+      apk: ["sudo apk add go"]
+
+tools:
+  - name: "pdtm"
+    description: "ProjectDiscovery's Open Source Tool Manager"
+    binary: "pdtm"
+    commands:
+      - cmd: "go install -v github.com/projectdiscovery/pdtm/cmd/pdtm@latest"
+
+  - name: "ffuf"
+    description: "Fast web fuzzer written in Go"
+    binary: "ffuf"
+    commands:
+      - cmd: "go install github.com/ffuf/ffuf/v2@latest"
+
+  - name: "waybackurls"
+    description: "Fetch all the URLs that the Wayback Machine knows about for a domain"
+    binary: "waybackurls"
+    commands:
+      - cmd: "go install github.com/tomnomnom/waybackurls@latest"
+
+  - name: "gau"
+    description: "Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl."
+    binary: "gau"
+    commands:
+      - cmd: "go install github.com/lc/gau/v2/cmd/gau@latest"
+
+  - name: "anew"
+    description: "A tool for adding new lines to files, skipping duplicates"
+    binary: "anew"
+    commands:
+      - cmd: "go install -v github.com/tomnomnom/anew@latest"
+
+  - name: "assetfinder"
+    description: "Find domains and subdomains related to a given domain"
+    binary: "assetfinder"
+    commands:
+      - cmd: "go install github.com/tomnomnom/assetfinder@latest"
+
+  - name: "qsreplace"
+    description: "Accept URLs on stdin, replace all query string values with a user-supplied value"
+    binary: "qsreplace"
+    commands:
+      - cmd: "go install github.com/tomnomnom/qsreplace@latest"
+  
+  - name: "findomain"
+    description: "Findomain is a fast and cross-platform tool for finding subdomains using public sources"
+    binary: "findomain"
+    commands:
+      - cmd: "git clone https://github.com/findomain/findomain.git --depth 1"
+      - cmd: "cd findomain"
+      - cmd: "cargo build --release"
+      - cmd: "sudo mv target/release/findomain /usr/bin/"
+      - cmd: "cd .. && rm -rf findomain"
+
+  - name: "hakrawler"
+    description: "Simple, fast web crawler designed for easy, quick discovery of endpoints and assets within a web application"
+    binary: "hakrawler"
+    commands:
+      - cmd: "go install github.com/hakluke/hakrawler@latest"
+
+  - name: "x8"
+    description: "Hidden parameters discovery suite"
+    binary: "x8"
+    commands:
+      - cmd: "git clone https://github.com/sh1yo/x8 --depth 1"
+      - cmd: "cd x8"
+      - cmd: "cargo build --release"
+      - cmd: "sudo mv target/release/x8 /usr/bin/"
+      - cmd: "cd .. && rm -rf x8"
+
+  - name: "paramspider"
+    description: "Mining URLs from dark corners of Web Archives for bug hunting/fuzzing/further probing"
+    binary: "paramspider"
+    commands:
+      - cmd: "pip3 install git+https://github.com/devanshbatham/ParamSpider"
+
+  - name: "gf"
+    description: "A wrapper around grep, to help you grep for things"
+    binary: "gf"
+    commands:
+      - cmd: "go install github.com/tomnomnom/gf@latest"
+
+  # - name: ""
+  #   description: ""
+  #   binary: ""
+  #   commands:
+  #     - cmd: ""
+
+wordlists:
+  - name: "gf patterns"
+    description: "GF patterns for grep wrapper (gf)"
+    condition: ""
+    path: "~/.gf/"
+    commands:
+      - cmd: "sudo git clone https://github.com/coffinxp/GFpattren.git ~/.gf/ --depth 1"
+
+  # - name: ""
+  #   description: ""
+  #   condition: ""
+  #   path: ""
+  #   commands:
+  #     - cmd: ""
